@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#section-hero{
+  background: #1565bd;
+  background-image: url('../public/Polygon.svg');
+  background-image: url('../public/Polygon.svg'), linear-gradient(90deg,#27386d 0%, #1565bd 100%);
+  background-size: auto 100%;
+}
