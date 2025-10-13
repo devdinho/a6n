@@ -1,5 +1,77 @@
-import React from 'react';
-import { Code, Server, Smartphone, Cloud, Cpu, Shield } from 'lucide-react';
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { Code, Server, Smartphone, Cloud, Cpu, Shield } from "lucide-react";
+
+const services = [
+  {
+    icon: <Code size={24} />,
+    title: "Desenvolvimento Web",
+    description:
+      "Aplicações modernas, seguras e performáticas, construídas com tecnologias de ponta.",
+    items: [
+      "Sites e portais institucionais",
+      "Dashboards administrativos",
+      "Sistemas personalizados com Django ou FastAPI",
+    ],
+  },
+  {
+    icon: <Smartphone size={24} />,
+    title: "Aplicativos Mobile",
+    description:
+      "Desenvolvimento de aplicativos híbridos e nativos com React Native, integrados a APIs seguras.",
+    items: [
+      "Aplicativos iOS e Android",
+      "Integração com sistemas web",
+      "Interface fluida e responsiva",
+    ],
+  },
+  {
+    icon: <Server size={24} />,
+    title: "Infraestrutura e DevOps",
+    description:
+      "Automatizamos e escalamos aplicações em nuvem com pipelines CI/CD e conteinerização.",
+    items: [
+      "Docker, Nginx e orquestração",
+      "Deploy automatizado (GitHub Actions, Azure DevOps)",
+      "Monitoramento e observabilidade",
+    ],
+  },
+  {
+    icon: <Cloud size={24} />,
+    title: "Consultoria em TI",
+    description:
+      "Apoio técnico para empresas que buscam escalar, migrar ou modernizar suas soluções.",
+    items: [
+      "Arquitetura de sistemas e APIs",
+      "Cloud AWS e Azure",
+      "Otimização de desempenho",
+    ],
+  },
+  {
+    icon: <Cpu size={24} />,
+    title: "IA e Automação",
+    description:
+      "Integração de modelos de linguagem e automação de fluxos para aumentar a eficiência.",
+    items: [
+      "LLMs locais e APIs de IA",
+      "Processos automatizados com Python",
+      "Chatbots e análise inteligente",
+    ],
+  },
+  {
+    icon: <Shield size={24} />,
+    title: "Segurança e Compliance",
+    description:
+      "Implementação de práticas seguras em código, autenticação e infraestrutura.",
+    items: [
+      "Autenticação JWT e OAuth2",
+      "Proteção de APIs e dados sensíveis",
+      "Conformidade com LGPD",
+    ],
+  },
+];
 
 export default function Features() {
   return (
@@ -10,108 +82,58 @@ export default function Features() {
             Nossos Serviços
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Oferecemos soluções tecnológicas completas — do desenvolvimento à infraestrutura —
-            para impulsionar negócios digitais com performance, segurança e escalabilidade.
+            Oferecemos soluções tecnológicas completas — do desenvolvimento à
+            infraestrutura — para impulsionar negócios digitais com performance,
+            segurança e escalabilidade.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="relative bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-transform duration-300 overflow-hidden"
+            >
+              {/* Brilho de fundo animado */}
+              <motion.div
+                animate={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                whileHover={{
+                  scale: 1.2,
+                  opacity: 0.2,
+                  filter: "blur(60px)",
+                }}
+                className="absolute inset-0 opacity-10 bg-gradient-to-r from-[#1565bd] via-[#00bcd4] to-[#1565bd] blur-3xl rounded-lg"
+              />
 
-          {/* Desenvolvimento Web */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-transform hover:-translate-y-1 duration-300">
-            <div className="w-12 h-12 bg-[#1565bd] text-white rounded-full flex items-center justify-center mb-4">
-              <Code size={24} />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Desenvolvimento Web</h3>
-            <p className="text-gray-600">
-              Aplicações modernas, seguras e performáticas, construídas com tecnologias de ponta.
-            </p>
-            <ul className="mt-4 space-y-2 text-gray-600">
-              <li>• Sites e portais institucionais</li>
-              <li>• Dashboards administrativos</li>
-              <li>• Sistemas personalizados com Django ou FastAPI</li>
-            </ul>
-          </div>
+              {/* Ícone com gradiente fixo */}
+              <div className="relative z-10 w-12 h-12 bg-gradient-to-r from-[#1565bd] to-[#00bcd4] text-white rounded-full flex items-center justify-center mb-4 shadow-md">
+                {service.icon}
+              </div>
 
-          {/* Aplicativos e Sistemas Mobile */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-transform hover:-translate-y-1 duration-300">
-            <div className="w-12 h-12 bg-[#1565bd] text-white rounded-full flex items-center justify-center mb-4">
-              <Smartphone size={24} />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Aplicativos Mobile</h3>
-            <p className="text-gray-600">
-              Desenvolvimento de aplicativos híbridos e nativos com React Native, integrados a APIs seguras.
-            </p>
-            <ul className="mt-4 space-y-2 text-gray-600">
-              <li>• Aplicativos iOS e Android</li>
-              <li>• Integração com sistemas web</li>
-              <li>• Interface fluida e responsiva</li>
-            </ul>
-          </div>
-
-          {/* Infraestrutura e DevOps */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-transform hover:-translate-y-1 duration-300">
-            <div className="w-12 h-12 bg-[#1565bd] text-white rounded-full flex items-center justify-center mb-4">
-              <Server size={24} />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Infraestrutura e DevOps</h3>
-            <p className="text-gray-600">
-              Automatizamos e escalamos aplicações em nuvem com pipelines CI/CD e conteinerização.
-            </p>
-            <ul className="mt-4 space-y-2 text-gray-600">
-              <li>• Docker, Nginx e orquestração</li>
-              <li>• Deploy automatizado (GitHub Actions, Azure DevOps)</li>
-              <li>• Monitoramento e observabilidade</li>
-            </ul>
-          </div>
-
-          {/* Consultoria em TI e Arquitetura */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-transform hover:-translate-y-1 duration-300">
-            <div className="w-12 h-12 bg-[#1565bd] text-white rounded-full flex items-center justify-center mb-4">
-              <Cloud size={24} />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Consultoria em TI</h3>
-            <p className="text-gray-600">
-              Apoio técnico para empresas que buscam escalar, migrar ou modernizar suas soluções.
-            </p>
-            <ul className="mt-4 space-y-2 text-gray-600">
-              <li>• Arquitetura de sistemas e APIs</li>
-              <li>• Cloud AWS e Azure</li>
-              <li>• Otimização de desempenho</li>
-            </ul>
-          </div>
-
-          {/* Inteligência Artificial e Automação */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-transform hover:-translate-y-1 duration-300">
-            <div className="w-12 h-12 bg-[#1565bd] text-white rounded-full flex items-center justify-center mb-4">
-              <Cpu size={24} />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">IA e Automação</h3>
-            <p className="text-gray-600">
-              Integração de modelos de linguagem e automação de fluxos para aumentar a eficiência.
-            </p>
-            <ul className="mt-4 space-y-2 text-gray-600">
-              <li>• LLMs locais e APIs de IA</li>
-              <li>• Processos automatizados com Python</li>
-              <li>• Chatbots e análise inteligente</li>
-            </ul>
-          </div>
-
-          {/* Segurança e Compliance */}
-          <div className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-transform hover:-translate-y-1 duration-300">
-            <div className="w-12 h-12 bg-[#1565bd] text-white rounded-full flex items-center justify-center mb-4">
-              <Shield size={24} />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Segurança e Compliance</h3>
-            <p className="text-gray-600">
-              Implementação de práticas seguras em código, autenticação e infraestrutura.
-            </p>
-            <ul className="mt-4 space-y-2 text-gray-600">
-              <li>• Autenticação JWT e OAuth2</li>
-              <li>• Proteção de APIs e dados sensíveis</li>
-              <li>• Conformidade com LGPD</li>
-            </ul>
-          </div>
+              <h3 className="relative z-10 text-xl font-semibold mb-2 text-gray-900">
+                {service.title}
+              </h3>
+              <p className="relative z-10 text-gray-600">
+                {service.description}
+              </p>
+              <ul className="relative z-10 mt-4 space-y-2 text-gray-600">
+                {service.items.map((item, i) => (
+                  <li key={i}>• {item}</li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
