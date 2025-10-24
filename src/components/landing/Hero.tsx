@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import profile from '../../public/profile.png';
+import presentation from '../../public/presentation.png';
 
 export default function Hero() {
   return (
@@ -30,10 +30,8 @@ export default function Hero() {
           </div>
         </div>
         <div className='md:w-1/2 flex justify-center'>
-          <div className='relative w-full max-w-md aspect-square'>
-            <Image src={profile} alt='Ilustração do Hero' className='w-full h-full object-contain absolute z-10'/>
-            <div className='inset-0 md:h-1/2 rounded-lg flex items-center justify-center'></div>
-            <div className='inset-0 bg-white bg-opacity-20 md:h-3/4 rounded-xl flex items-center justify-center'></div>
+          <div className='relative w-full max-w-md aspect-square flex items-center justify-center'>
+            <Image id="presentation" src={presentation} alt='Ilustração do Hero' className='w-full object-contain absolute z-10'/>
           </div>
         </div>
       </div>
