@@ -8,7 +8,7 @@ export default function Hero() {
     <section id='section-hero' className='text-white py-8'>
       <div className='container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-12'>
         <div className='md:w-1/2 space-y-6'>
-          <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'>
+          <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold leading-tight'>
             Transformando ideias em soluções digitais
           </h1>
           <p className='text-lg md:text-xl opacity-90 max-w-lg'>
@@ -30,9 +30,7 @@ export default function Hero() {
           </div>
         </div>
         <div className='md:w-1/2 flex justify-center'>
-          <div className='relative w-full max-w-md aspect-square flex items-center justify-center'>
-            <Image id="presentation" src={presentation} alt='Ilustração do Hero' className='w-full object-contain absolute z-10'/>
-          </div>
+          <Image id="presentation" src={presentation} alt='Ilustração do Hero' className='w-full object-contain'/>
         </div>
       </div>
     </section>
