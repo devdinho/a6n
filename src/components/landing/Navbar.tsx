@@ -1,47 +1,63 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import A6NLogo from '../../public/A6N 1.svg';
+import A6NLogo from '../../public/A6N 2.svg';
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className='bg-white shadow-sm sticky top-0 z-50'>
-      <div className='container mx-auto px-4 md:px-6'>
-        <div className='flex items-center justify-between'>
-          <Link href='/' className='flex items-center space-x-2'>
-            <Image src={A6NLogo} alt='A6N Logo' height={60}/>
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[#060d1f]/90 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex items-center justify-between h-16">
+          <Link href="/" className="flex items-center">
+            <Image src={A6NLogo} alt="A6N Logo" height={36} />
           </Link>
-          
-          <nav className='hidden md:flex items-center space-x-8 py-4'>
-            <Link href='/' className='text-gray-700 hover:text-[#1565bd] font-medium transition-colors'>
-              Início
-            </Link>
-            <Link href='#servicos' className='text-gray-700 hover:text-[#1565bd] font-medium transition-colors'>
-              Serviços
-            </Link>
-            <Link href='#' className='text-gray-700 hover:text-[#1565bd] font-medium transition-colors'>
-              Sobre
-            </Link>
-            <Link href='#' className='text-gray-700 hover:text-[#1565bd] font-medium transition-colors'>
-              Blog
-            </Link>
-            <Link href='#contato' className='text-gray-700 hover:text-[#1565bd] font-medium transition-colors'>
-              Contato
-            </Link>
+
+          <nav className="hidden md:flex items-center space-x-8">
+            {[
+              { href: '/',         label: 'Início' },
+              { href: '#servicos', label: 'Serviços' },
+              { href: '/apps',     label: 'Apps' },
+              { href: '#',         label: 'Sobre' },
+              { href: '#contato',  label: 'Contato' },
+            ].map(({ href, label }) => (
+              <Link
+                key={label}
+                href={href}
+                className="text-white/70 hover:text-white font-medium transition-colors text-sm"
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
-          
-          <div className='flex items-center space-x-4'>
+
+          <div className="flex items-center space-x-4">
             <Link
-              href='#contato'
-              className='hidden md:inline-flex bg-[#1565bd] text-white hover:bg-[#0d47a1] transition-colors px-4 py-2 rounded-md font-medium'
+              href="#contato"
+              className="hidden md:inline-flex items-center bg-[#3B82F6] hover:bg-[#2563eb] text-white transition-colors px-4 py-2 rounded-md text-sm font-medium"
             >
               Fale Conosco
             </Link>
-            
-            <button className='md:hidden text-gray-700 hover:text-[#1565bd] transition-colors'>
-              <span className='block w-6 h-0.5 bg-current mb-1'></span>
-              <span className='block w-6 h-0.5 bg-current mb-1'></span>
-              <span className='block w-6 h-0.5 bg-current'></span>
+
+            <button className="md:hidden text-white/80 hover:text-white transition-colors" aria-label="Menu">
+              <span className="block w-6 h-0.5 bg-current mb-1.5" />
+              <span className="block w-6 h-0.5 bg-current mb-1.5" />
+              <span className="block w-6 h-0.5 bg-current" />
             </button>
           </div>
         </div>

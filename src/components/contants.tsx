@@ -1,4 +1,4 @@
-import { Code, Server, Smartphone, Cloud, Cpu, Shield } from "lucide-react";
+import { Code, Server, Smartphone, GitMerge, Bot, Shield } from "lucide-react";
 
 export const email = "contato@a6n.tech"
 
@@ -11,19 +11,19 @@ export const services = [
     description:
       "Aplicações modernas, seguras e performáticas, construídas com tecnologias de ponta.",
     items: [
-      "Sites e portais institucionais",
-      "Dashboards administrativos",
+      "Sites, portais e dashboards",
       "Sistemas personalizados com Django ou FastAPI",
+      "Frontend em React e Next.js",
     ],
   },
   {
     icon: <Smartphone size={24} />,
     title: "Aplicativos Mobile",
     description:
-      "Desenvolvimento de aplicativos híbridos e nativos com React Native, integrados a APIs seguras.",
+      "Aplicativos híbridos e nativos com React Native, integrados a APIs seguras e escaláveis.",
     items: [
-      "Aplicativos iOS e Android",
-      "Integração com sistemas web",
+      "iOS e Android com uma única base de código",
+      "Integração com sistemas web e APIs REST",
       "Interface fluida e responsiva",
     ],
   },
@@ -33,40 +33,40 @@ export const services = [
     description:
       "Automatizamos e escalamos aplicações em nuvem com pipelines CI/CD e conteinerização.",
     items: [
-      "Docker, Nginx e orquestração",
-      "Deploy automatizado (GitHub Actions, Azure DevOps)",
-      "Monitoramento e observabilidade",
+      "Docker, Nginx e orquestração de containers",
+      "Deploy automatizado (GitHub Actions, GitLab CI)",
+      "Monitoramento com Prometheus e Grafana",
     ],
   },
   {
-    icon: <Cloud size={24} />,
-    title: "Consultoria em TI",
+    icon: <GitMerge size={24} />,
+    title: "APIs & Integrações",
     description:
-      "Apoio técnico para empresas que buscam escalar, migrar ou modernizar suas soluções.",
+      "Design e desenvolvimento de APIs robustas e integrações entre sistemas, plataformas e serviços de terceiros.",
     items: [
-      "Arquitetura de sistemas e APIs",
-      "Cloud AWS e Azure",
-      "Otimização de desempenho",
+      "APIs REST e GraphQL com autenticação segura",
+      "Webhooks, filas e processamento assíncrono",
+      "Integrações com ERPs, CRMs e serviços externos",
     ],
   },
   {
-    icon: <Cpu size={24} />,
-    title: "IA e Automação",
+    icon: <Bot size={24} />,
+    title: "Agentes de IA & LLM",
     description:
-      "Integração de modelos de linguagem e automação de fluxos para aumentar a eficiência.",
+      "Construímos plataformas de IA com agentes autônomos, RAG e orquestração de modelos de linguagem para automatizar processos complexos.",
     items: [
-      "LLMs locais e APIs de IA",
-      "Processos automatizados com Python",
-      "Chatbots e análise inteligente",
+      "Agentes autônomos com MCP e orquestração multi-agent",
+      "RAG sobre bases de dados proprietárias (PGVector)",
+      "Integração com OpenAI, Anthropic e LLMs locais",
     ],
   },
   {
     icon: <Shield size={24} />,
     title: "Segurança e Compliance",
     description:
-      "Implementação de práticas seguras em código, autenticação e infraestrutura.",
+      "Implementação de práticas seguras em código, autenticação e infraestrutura, com conformidade regulatória.",
     items: [
-      "Autenticação JWT e OAuth2",
+      "Autenticação JWT, OAuth2 e rate limiting",
       "Proteção de APIs e dados sensíveis",
       "Conformidade com LGPD",
     ],

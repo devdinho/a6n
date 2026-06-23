@@ -1,37 +1,73 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import presentation from '../../public/presentation.png';
+import FloatingLines from '../ui/FloatingLines';
+import TypingEffect from '../ui/TypingEffect';
+
+const typingTexts = [
+  'soluções digitais',
+  'plataformas de IA',
+  'sistemas escaláveis',
+  'produtos web modernos',
+];
 
 export default function Hero() {
   return (
-    <section id='section-hero' className='text-white py-8'>
-      <div className='container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-12'>
-        <div className='md:w-1/2 space-y-6'>
-          <h1 className='text-3xl md:text-4xl lg:text-5xl font-bold leading-tight'>
-            Transformando ideias em soluções digitais
+    <section
+      id="section-hero"
+      className="relative overflow-hidden text-white py-16 md:py-24"
+    >
+      {/* FloatingLines background */}
+      <FloatingLines
+        linesGradient={["#3B82F6","#6f6f6f","#06B6D4"]}
+        animationSpeed={1}
+        interactive
+        bendRadius={8}
+        bendStrength={-2}
+        mouseDamping={0.05}
+        parallax
+        parallaxStrength={0.2}
+      />
+
+      {/* Subtle dark overlay for text contrast */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'linear-gradient(to right, rgba(20,40,100,0.55) 0%, rgba(13,71,161,0.25) 100%)', zIndex: 1 }}
+      />
+
+      {/* Content */}
+      <div className="relative container mx-auto px-4 flex flex-col items-center justify-between" style={{ zIndex: 2 }}>
+          <h1 className="text-5xl font-bold leading-tight min-w-[600px] text-center md:text-left">
+            Transformando ideias em
+            <br />
+            {' '}
+            <TypingEffect
+              texts={typingTexts}
+              typingSpeed={55}
+              deletingSpeed={28}
+              pauseMs={1400}
+              className="text-[#ffffff] font-semibold"
+            />
           </h1>
-          <p className='text-lg md:text-xl opacity-90 max-w-lg'>
+          <p className="text-lg md:text-xl opacity-85 max-w-lg">
             Desenvolvemos soluções tecnológicas inovadoras que impulsionam o crescimento do seu negócio.
           </p>
-          <div className='flex flex-col sm:flex-row gap-4 pt-4'>
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Link
-              href='#contato'
-              className='bg-white text-[#1565bd] hover:bg-opacity-90 transition-all px-6 py-3 rounded-md font-medium text-center'
+              href="#contato"
+              className="bg-white text-[#1565bd] hover:bg-opacity-90 transition-all px-6 py-3 rounded-md font-medium text-center"
             >
               Fale Conosco
             </Link>
             <Link
-              href='#servicos'
-              className='bg-transparent border border-white hover:bg-white hover:bg-opacity-10 transition-all px-6 py-3 rounded-md font-medium text-center'
+              href="#servicos"
+              className="bg-transparent border border-white hover:bg-white/10 transition-all px-6 py-3 rounded-md font-medium text-center backdrop-blur-sm"
             >
               Nossos Serviços
             </Link>
           </div>
-        </div>
-        <div className='md:w-1/2 flex justify-center'>
-          <Image id="presentation" src={presentation} alt='Ilustração do Hero' className='w-full object-contain'/>
-        </div>
       </div>
     </section>
   );
