@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import A6NLogo from '../../public/A6N 2.svg';
+import A6NLogo from '@/public/A6N 1.svg';
 import { services, email, phoneNumber } from '../contants';
 import { MapPin, Mail, Phone } from 'lucide-react';
 
@@ -15,7 +15,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="mb-4">
-              <Image src={A6NLogo} alt="A6N Logo" height={32} />
+              <Image src={A6NLogo} alt="A6N Logo" height={32} 
+                style={{
+                  filter: "brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg) brightness(103%) contrast(103%)"
+                }}
+              />
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-5">
               Transformando ideias em soluções digitais desde 2022.

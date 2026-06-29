@@ -38,7 +38,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative container mx-auto px-4 flex flex-col items-center justify-between" style={{ zIndex: 2 }}>
-          <h1 className="text-5xl font-bold leading-tight min-w-[600px] text-center md:text-left">
+          <h1 className="text-5xl font-bold leading-tight min-w-[400px] text-center md:text-left">
             Transformando ideias em
             <br />
             {' '}

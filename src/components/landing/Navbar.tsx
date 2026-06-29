@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import A6NLogo from '../../public/A6N 2.svg';
+import A6NLogo from '@/public/A6N 1.svg';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,7 +25,11 @@ export default function Navbar() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
-            <Image src={A6NLogo} alt="A6N Logo" height={36} />
+            <Image src={A6NLogo} alt="A6N Logo" height={36} 
+              style={{
+                filter: "brightness(0) saturate(100%) invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg) brightness(103%) contrast(103%)"
+              }}
+            />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
