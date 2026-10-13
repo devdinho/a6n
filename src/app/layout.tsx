@@ -13,9 +13,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const description =
+  "Desenvolvimento de software sob medida: sistemas web e mobile, plataformas de IA com agentes e RAG, APIs, dados e infraestrutura em nuvem.";
+
 export const metadata: Metadata = {
-  title: "A6N Tecnologia",
-  description: "Transformando ideias em soluções digitais",
+  metadataBase: new URL("https://a6n.tech"),
+  title: {
+    default: "A6N Tecnologia — Transformando ideias em soluções digitais",
+    template: "%s | A6N Tecnologia",
+  },
+  description,
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "/",
+    siteName: "A6N Tecnologia",
+    title: "A6N Tecnologia — Transformando ideias em soluções digitais",
+    description,
+  },
+  twitter: {
+    card: "summary",
+    title: "A6N Tecnologia",
+    description,
+  },
 };
 
 export default function RootLayout({

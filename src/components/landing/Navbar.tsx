@@ -5,8 +5,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import A6NLogo from '@/public/A6N 1.svg';
 
+const navLinks = [
+  { href: '/',          label: 'Início' },
+  { href: '/#servicos', label: 'Serviços' },
+  { href: '/apps',      label: 'Apps' },
+  { href: '/#contato',  label: 'Contato' },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -17,7 +25,7 @@ export default function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || menuOpen
           ? 'bg-[#060d1f]/90 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20'
           : 'bg-transparent'
       }`}
@@ -33,13 +41,7 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            {[
-              { href: '/',         label: 'Início' },
-              { href: '#servicos', label: 'Serviços' },
-              { href: '/apps',     label: 'Apps' },
-              { href: '#',         label: 'Sobre' },
-              { href: '#contato',  label: 'Contato' },
-            ].map(({ href, label }) => (
+            {navLinks.map(({ href, label }) => (
               <Link
                 key={label}
                 href={href}
@@ -52,19 +54,47 @@ export default function Navbar() {
 
           <div className="flex items-center space-x-4">
             <Link
-              href="#contato"
+              href="/#contato"
               className="hidden md:inline-flex items-center bg-[#3B82F6] hover:bg-[#2563eb] text-white transition-colors px-4 py-2 rounded-md text-sm font-medium"
             >
               Fale Conosco
             </Link>
 
-            <button className="md:hidden text-white/80 hover:text-white transition-colors" aria-label="Menu">
+            <button
+              className="md:hidden text-white/80 hover:text-white transition-colors"
+              aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setMenuOpen((open) => !open)}
+            >
               <span className="block w-6 h-0.5 bg-current mb-1.5" />
               <span className="block w-6 h-0.5 bg-current mb-1.5" />
               <span className="block w-6 h-0.5 bg-current" />
             </button>
           </div>
         </div>
+
+        {menuOpen && (
+          <nav id="mobile-menu" className="md:hidden flex flex-col pb-4">
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={label}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className="py-3 text-white/80 hover:text-white font-medium text-sm border-t border-white/10"
+              >
+                {label}
+              </Link>
+            ))}
+            <Link
+              href="/#contato"
+              onClick={() => setMenuOpen(false)}
+              className="mt-3 inline-flex justify-center bg-[#3B82F6] hover:bg-[#2563eb] text-white transition-colors px-4 py-2.5 rounded-md text-sm font-medium"
+            >
+              Fale Conosco
+            </Link>
+          </nav>
+        )}
       </div>
     </header>
   );

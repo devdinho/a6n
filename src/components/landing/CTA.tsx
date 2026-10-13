@@ -4,6 +4,20 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Mail, Phone } from 'lucide-react';
+import { email, phoneNumber } from '../contants';
+
+// Sem backend: o envio abre o cliente de e-mail do visitante já preenchido.
+function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  const data = new FormData(e.currentTarget);
+  const name = String(data.get('name') ?? '').trim();
+  const from = String(data.get('email') ?? '').trim();
+  const message = String(data.get('message') ?? '').trim();
+
+  const subject = `Contato pelo site — ${name}`;
+  const body = `${message}\n\n—\n${name}\n${from}`;
+  window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 export default function CTA() {
   return (
@@ -43,14 +57,14 @@ export default function CTA() {
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
-                href="mailto:contato@a6n.tech"
+                href={`mailto:${email}`}
                 className="inline-flex items-center justify-center gap-2 bg-[#3B82F6] hover:bg-[#2563eb] transition-colors px-5 py-2.5 rounded-md text-sm font-medium"
               >
                 <Mail size={16} />
                 Enviar Email
               </Link>
               <Link
-                href="tel:+5563992041379"
+                href={`tel:+${phoneNumber.replace(/\D/g, '')}`}
                 className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all px-5 py-2.5 rounded-md text-sm font-medium backdrop-blur-sm"
               >
                 <Phone size={16} />
@@ -73,7 +87,7 @@ export default function CTA() {
             }}
           >
             <h3 className="text-white text-lg font-semibold mb-5">Fale com um especialista</h3>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               {[
                 { id: 'name',    label: 'Nome',     type: 'text',  placeholder: 'Seu nome completo' },
                 { id: 'email',   label: 'Email',    type: 'email', placeholder: 'seu@email.com' },
@@ -85,6 +99,8 @@ export default function CTA() {
                   <input
                     type={type}
                     id={id}
+                    name={id}
+                    required
                     className="w-full px-3 py-2.5 rounded-md text-sm text-white placeholder-white/25 outline-none transition-colors"
                     style={{
                       background: 'rgba(255,255,255,0.06)',
@@ -102,7 +118,9 @@ export default function CTA() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={4}
+                  required
                   className="w-full px-3 py-2.5 rounded-md text-sm text-white placeholder-white/25 outline-none transition-colors resize-none"
                   style={{
                     background: 'rgba(255,255,255,0.06)',

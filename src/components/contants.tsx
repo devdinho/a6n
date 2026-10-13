@@ -40,13 +40,13 @@ export const services = [
   },
   {
     icon: <GitMerge size={24} />,
-    title: "APIs & Integrações",
+    title: "APIs, Integrações & Dados",
     description:
-      "Design e desenvolvimento de APIs robustas e integrações entre sistemas, plataformas e serviços de terceiros.",
+      "APIs robustas, integrações entre sistemas e pipelines que transformam dados operacionais em indicadores.",
     items: [
-      "APIs REST e GraphQL com autenticação segura",
+      "APIs REST e integrações com serviços externos",
       "Webhooks, filas e processamento assíncrono",
-      "Integrações com ERPs, CRMs e serviços externos",
+      "Pipelines de dados (Airflow) e painéis de BI (Superset)",
     ],
   },
   {
